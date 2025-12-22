@@ -1,0 +1,23 @@
+<app-head 
+  [cardItems]="cardItems" 
+  (openSidebarEventEmitter)="openCart()" />
+<div class="container-xl">
+  <div class="cart-main">
+    <h3 class="cart-intro">Catálogo de Compras</h3>
+    <catalog
+      class="cart-catalogs"
+      [products]="products"
+      (addItemEventEmitter)="onAddItem($event)"
+    ></catalog>
+  </div>
+  <cart 
+    #offcanvasNavbar 
+    id="offcanvasNavbar" 
+    class="offcanvas offcanvas-end" 
+    tabindex="-1" 
+    aria-labelledby="offcanvasNavbarLabel"
+    [cardItems]="cardItems"
+    [totalCart]="totalCart"
+    (idProductEventEmitter)="onDeleteCart($event)"
+  ></cart>
+</div>

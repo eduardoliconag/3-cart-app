@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+:root,
+[data-bs-theme="light"] {
+  --bs-body-bg: #f1f5f9;
+}
+body {
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+.navbar {
+  --fch-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  background-color: #fff;
+  box-shadow: var(--fch-shadow);
+}
+.card {
+  --bs-card-bg: #fff;
+}
+.grid {
+  display: grid;
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.gap-0\.5 {
+  gap: 0.125rem !important; /* 2px */
+}
+.gap-1 {
+  gap: 0.25rem !important; /* 4px */
+}
+.gap-1\.5 {
+  gap: 0.375rem !important; /* 6px */
+}
+.gap-2 {
+  gap: 0.5rem !important; /* 8px */
+}
+.gap-2\.5 {
+  gap: 0.625rem !important; /* 10px */
+}
+

@@ -1,0 +1,6 @@
+@for (product of products; track $index) {
+<card
+  [product]="product"
+  (addItemEventEmitter)="onAddItem($event)"
+></card>
+}
