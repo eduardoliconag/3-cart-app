@@ -3,12 +3,64 @@
   --bs-offcanvas-bg: #fff;
 }
 
+/* Esto crea el "container" para container queries (opcional pero nice) */
+.main-view {
+  container-name: main-view-area;
+  container-type: inline-size;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Main ocupa todo */
+.main {
+  width: 100%;
+  min-height: 100%;
+
+  /* Espaciado lateral responsive: mínimo 16px, máximo 24px */
+  --content-spacing: clamp(16px, 2vw, 24px);
+}
+
+/* Sección de la página (puedes meter fondo aquí si quieres) */
+.page {
+  background: transparent;
+  padding-block: 8px 24px;
+}
+
+/* El contenedor central tipo Spotify */
+.contentSpacing {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--content-spacing);
+}
+
+.cart-catalogs{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 0.875rem;
+  align-items: stretch;
+  align-content: start;
+  width: 100%;
+}
+
+/* Ejemplo: si el contenedor crece, aumentas max-width o spacing */
+@container main-view-area (width > 900px) {
+  .main {
+    --content-spacing: clamp(20px, 2vw, 32px);
+  }
+
+  .contentSpacing {
+    max-width: 1400px;
+  }
+}
+
 .cart-sidebar{
   grid-area: sidebar;
 }
 
 .cart-main{
-  grid-area: main;
+  /* grid-area: main; */
+  container: main-view-grid-area;
 }
 
 .cart-intro{
@@ -18,12 +70,7 @@
   text-align: center;
 }
 
-.cart-catalogs{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 0.875rem;
-  align-items: stretch;
-}
+
 
 @media ( min-width : 1200px) {
 	.cart-layout {

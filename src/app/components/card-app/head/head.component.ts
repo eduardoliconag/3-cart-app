@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CartItem } from '../../../models/cartItem';
-//import { headBusService } from '../../../service/head-services/head.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-head',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './head.component.html',
   styleUrl: './head.component.css',
 })
@@ -15,11 +15,4 @@ export class HeadComponent {
 
   @Output() openSidebarEventEmitter = new EventEmitter();
 
-  //constructor(private cartSidebar: headBusService) {}
-
-  openCart(): void {
-    //if (window.innerWidth <= 1200) {
-      this.openSidebarEventEmitter.emit();
-    //}
-  }
 }

@@ -5,6 +5,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { CartComponent } from './cart/cart.component';
 import { CartItem } from '../../models/cartItem';
 import { HeadComponent } from './head/head.component';
+import { RouterOutlet } from '@angular/router';
 //import { AllMaterialModules } from '../../modulos/AllMaterialModules.module';
 
 declare const bootstrap: any; 
@@ -12,9 +13,10 @@ declare const bootstrap: any;
 @Component({
   selector: 'card-app',
   standalone: true,
-  imports: [HeadComponent, CatalogComponent, CartComponent],
+  imports: [HeadComponent, CatalogComponent, RouterOutlet],
   templateUrl: './card-app.component.html',
   styleUrl: './card-app.component.css',
+  host: { class: 'centered-layout' },
 })
 export class CardAppComponent implements OnInit, AfterViewInit {
   products: Product[] = [];
