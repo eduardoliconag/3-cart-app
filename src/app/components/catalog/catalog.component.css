@@ -1,0 +1,8 @@
+.cart-catalogs{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 0.875rem;
+  align-items: stretch;
+  align-content: start;
+  width: 100%;
+}

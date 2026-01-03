@@ -1,0 +1,11 @@
+<div class="text-center">
+    <h2 class="cart-intro">Catálogo de Compras</h2>
+</div>
+<div class="cart-catalogs">
+    @for (product of products; track $index) {
+        <card
+        [product]="product"
+        (productEventEmitter)="onAddCart($event)"
+        ></card>
+    }
+</div>
