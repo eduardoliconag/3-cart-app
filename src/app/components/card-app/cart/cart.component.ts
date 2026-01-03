@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CartItem } from '../../../models/cartItem';
 import { Router } from '@angular/router';
+import { SharingDataService } from '../../../services/sharing-data.service';
 
 @Component({
   selector: 'cart',
@@ -11,16 +12,19 @@ import { Router } from '@angular/router';
 })
 export class CartComponent {
   
-  @Input() cardItems: CartItem[] = [];
-  @Input() totalCart: number = 0;
-  @Output() idProductEventEmitter = new EventEmitter();
+  cardItems: CartItem[] = [];
+  totalCart: number = 0;
 
-  constructor(private router: Router) {
+  idProductEventEmitter = new EventEmitter();
+
+  constructor(private sharingDataService: SharingDataService, private router: Router) {
+    debugger;
     this.cardItems = this.router.getCurrentNavigation()?.extras.state?.['cardItems'] || [];
+    this.totalCart = this.router.getCurrentNavigation()?.extras.state?.['totalCart'] || 0;
   }
   
   deleteCartItem(id: number): void {
-    this.idProductEventEmitter.emit(id);
+    this.sharingDataService.idProductEventEmitter.emit(id);
   }
 
   clearCart(): void {

@@ -6,6 +6,7 @@ import { CartComponent } from './cart/cart.component';
 import { CartItem } from '../../models/cartItem';
 import { HeadComponent } from './head/head.component';
 import { RouterOutlet } from '@angular/router';
+import { SharingDataService } from '../../services/sharing-data.service';
 //import { AllMaterialModules } from '../../modulos/AllMaterialModules.module';
 
 declare const bootstrap: any; 
@@ -29,7 +30,7 @@ export class CardAppComponent implements OnInit, AfterViewInit {
 
   private offcanvasInstance!: any;
 
-  constructor(private service: ProductService) {}
+  constructor(private sharingDataService: SharingDataService, private service: ProductService) {}
 
   ngOnInit(): void {
     this.products = this.service.findAll();
@@ -60,7 +61,13 @@ export class CardAppComponent implements OnInit, AfterViewInit {
     // this.saveSession();
   }
 
-  onDeleteCart(id: number): void {
+  onDeleteCart(): void {
+    this.sharingDataService.idProductEventEmitter.subscribe((id: number) => this.deleteItem(id));
+    // this.updateCart();
+    // this.saveSession();
+  }
+
+  deleteItem(id: number): void {
     const hasItem = this.cardItems.find((i) => i.product.id === id);
     if (hasItem) {
       if (hasItem.quantity === 1) {
@@ -76,9 +83,6 @@ export class CardAppComponent implements OnInit, AfterViewInit {
         });
       }
     }
-
-    // this.updateCart();
-    // this.saveSession();
   }
 
   // calculateTotal(): void {

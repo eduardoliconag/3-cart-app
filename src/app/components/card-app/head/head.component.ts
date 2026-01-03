@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 export class HeadComponent {
   @Input() cardItems: CartItem[] = [];
   @Input() totalQuantity: number = 0;
+  @Input() totalCart: number = 0;
 
   @Output() openSidebarEventEmitter = new EventEmitter();
 
